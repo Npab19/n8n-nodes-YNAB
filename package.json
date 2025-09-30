@@ -1,5 +1,5 @@
 {
-  "name": "n8n-nodes-ynab",
+  "name": "n8n-nodes-ynab-npab19",
   "version": "1.0.0",
   "description": "n8n node for YNAB (You Need A Budget) API integration with support for budgets, accounts, transactions, categories, and payees",
   "keywords": [
