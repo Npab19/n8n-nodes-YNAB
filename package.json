@@ -1,0 +1,60 @@
+{
+  "name": "n8n-nodes-ynab",
+  "version": "1.0.0",
+  "description": "n8n node for YNAB (You Need A Budget) API integration with support for budgets, accounts, transactions, categories, and payees",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "ynab",
+    "you need a budget",
+    "budget",
+    "finance",
+    "accounting",
+    "personal finance",
+    "transactions",
+    "budgeting"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Npab19/n8n-nodes-YNAB#readme",
+  "author": {
+    "name": "Nikko Pabion",
+    "email": "npab19@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Npab19/n8n-nodes-YNAB.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials --write",
+    "lint": "eslint nodes/**/*.ts credentials/**/*.ts package.json",
+    "lintfix": "eslint nodes/**/*.ts credentials/**/*.ts package.json --fix",
+    "prepublishOnly": "npm run build && npm run lint"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/YnabApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Ynab/Ynab.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^7.15.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-n8n-nodes-base": "^1.16.1",
+    "gulp": "^4.0.2",
+    "n8n-workflow": "^1.50.0",
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "YNAB Test - Get Budgets",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "resource": "budget",
+        "operation": "getAll",
+        "include_accounts": true
+      },
+      "id": "ynab-node",
+      "name": "YNAB - Get All Budgets",
+      "type": "n8n-nodes-ynab.ynab",
+      "typeVersion": 1,
+      "position": [450, 300],
+      "credentials": {
+        "ynabApi": {
+          "id": "ynab-credentials",
+          "name": "YNAB API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "YNAB - Get All Budgets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "1"
+}
