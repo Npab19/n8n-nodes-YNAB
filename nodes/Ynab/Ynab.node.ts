@@ -23,6 +23,8 @@ export class Ynab implements INodeType {
 		},
 		inputs: ['main'],
 		outputs: ['main'],
+		// @ts-ignore - usableAsTool is not in the type definition yet but is supported
+		usableAsTool: true,
 		credentials: [
 			{
 				name: 'ynabApi',

@@ -29,7 +29,7 @@ Once published to npm, you can install this node directly in n8n:
 
 1. Go to **Settings** > **Community Nodes**
 2. Click **Install**
-3. Enter `n8n-nodes-ynab`
+3. Enter `n8n-nodes-ynab-npab19`
 4. Click **Install**
 
 #### Option 2: Manual Installation
@@ -204,10 +204,36 @@ For issues and questions:
 
 ## AI Agent Compatibility
 
-This node is designed to work seamlessly with n8n's AI Agent node. You can use this node to:
-- Query budget information for AI analysis
-- Create transactions based on AI decisions
-- Retrieve account balances for financial planning
-- Get category spending data for budget recommendations
+This node is fully compatible with n8n's AI Agent (LangChain) and can be used as a tool by AI agents.
 
-The node uses declarative-style configuration, making it easy for AI agents to understand and utilize the available operations.
+### Using with AI Agents
+
+1. **Enable Community Package Tool Usage** (required for self-hosted n8n):
+   ```bash
+   export N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
+   ```
+   Or add to your n8n environment configuration.
+
+2. **Add as a Tool to AI Agent**:
+   - Add an **AI Agent** node (Tools Agent type)
+   - Connect the YNAB node to the AI Agent's tools input
+   - The AI will automatically use YNAB operations when needed
+
+3. **Example AI Agent Use Cases**:
+   - "What's my total budget balance across all accounts?"
+   - "Create a transaction for $50 at Starbucks in my coffee category"
+   - "Show me all transactions from last week"
+   - "What categories am I overspending in?"
+   - "Add a $100 payment to my credit card account"
+
+The AI agent can intelligently select the appropriate YNAB operations (get budgets, create transactions, etc.) based on natural language requests.
+
+### AI Agent Workflow Example
+
+```
+Manual Trigger → AI Agent (Tools Agent) → [Connected Tools]
+                                            ├─ YNAB Node
+                                            └─ Other Tools
+```
+
+The node uses `usableAsTool: true` to enable AI agent integration, allowing the AI to understand and utilize all available YNAB operations dynamically.
